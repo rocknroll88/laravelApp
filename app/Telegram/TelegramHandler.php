@@ -28,9 +28,10 @@ class TelegramHandler extends WebhookHandler
     {
         Telegraph::message('hello world')
             ->keyboard(Keyboard::make()->buttons([
-                Button::make("🗑️ Delete")->action("delete"),
-                Button::make("📖 Mark as Read")->action("read"),
-                Button::make("👀 Open")->url('https://test.it'),
+                Button::make("👀 new")->action("new"),
+                Button::make("👀 settings")->action("settings"),
+                Button::make("👀 mode")->action("mode"),
+                Button::make("👀 balance")->action("balance"),
             ]))->send();
     }
 
@@ -41,8 +42,6 @@ class TelegramHandler extends WebhookHandler
 
     protected function handleChatMessage(Stringable $text): void
     {
-//        Telegraph::message('hello')->dispatch();
-
         $message = $text->value();
         $answer = $this->chatService->get($message);
 

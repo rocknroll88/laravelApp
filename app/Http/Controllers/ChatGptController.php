@@ -9,6 +9,6 @@ class ChatGptController extends Controller
     public function getInfo()
     {
         $service = new ChatGptService();
-        $service->get('напиши фабрику на php');
+        $service->get('как звали первого космонавта?');
     }
 }
