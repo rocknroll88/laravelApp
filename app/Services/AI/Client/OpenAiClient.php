@@ -57,12 +57,16 @@ class OpenAiClient implements AiClient
                 output: $output,
                 tokens: $result['usage']['total_tokens'],
             );
-        } catch (\PHPUnit\Exception $e) {
+        } catch (Exception $e) {
             throw new AiException();
         }
     }
 
-    protected function prepareContext(array $contextList)
+    /**
+     * @param  array  $contextList
+     * @return array
+     */
+    protected function prepareContext(array $contextList): array
     {
         $output = [];
 
@@ -74,7 +78,11 @@ class OpenAiClient implements AiClient
         return $output;
     }
 
-    protected function createContextArray(AiContextDto $dto)
+    /**
+     * @param  AiContextDto  $dto
+     * @return array
+     */
+    protected function createContextArray(AiContextDto $dto): array
     {
         return [
             'role' => $dto->role->value,

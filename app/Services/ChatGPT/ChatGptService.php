@@ -4,13 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services\ChatGPT;
 
-use App\Models\Chat;
-use App\Models\ChatGptChats;
 use App\Services\AI\Client\AiClient;
-use App\Services\AI\Client\OpenAiClient;
 use App\Services\AI\DTO\AiCommandDto;
 use App\Services\AI\DTO\AiResultDto;
-use OpenAI;
 
 class ChatGptService
 {
@@ -20,12 +16,12 @@ class ChatGptService
     {
     }
 
-    public function generateGreeting(): AiResultDto
+    public function generateText(string $prompt, $identity): AiResultDto
     {
         return $this->client->generate(
             new AiCommandDto(
-                'Как экономить бюджет',
-                'Сегодня ты финансовый консультант',
+                $prompt,
+                $identity,
             )
         );
     }

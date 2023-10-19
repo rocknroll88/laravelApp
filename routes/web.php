@@ -1,11 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CarsController;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\PusherController;
-use App\Http\Controllers\GptController;
-
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +14,6 @@ use App\Http\Controllers\GptController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
-//Route::get('/test', [CarsController::class, 'getCars']);
-
-//Route::get('/yoomoney/payment-info', [CarsController::class, 'getPaymentInfo']);
-//Route::get('/yoomoney/banks', [CarsController::class, 'getSpbBanks']);
-//Route::get('/yoomoney/payment', [CarsController::class, 'setPayment']);
-
-
-//Route::get('/factory', [TestController::class, 'index']);
-Route::get('/test', [GptController::class, 'index']);
+Route::get('/', [ChatController::class, 'index']);
+Route::post('/', [ChatController::class, 'store']);
+Route::get('/reset', [ChatController::class, 'destroy']);
