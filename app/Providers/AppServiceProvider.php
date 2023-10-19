@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\AI\Client\AiClient;
+use App\Services\AI\Client\OpenAiClient;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +13,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $singletons = [
+            AiClient::class => OpenAiClient::class,
+        ];
+
+        foreach ($singletons as $abstract => $concrete) {
+            $this->app->singleton(
+                $abstract,
+                $concrete,
+            );
+        }
     }
 
     /**

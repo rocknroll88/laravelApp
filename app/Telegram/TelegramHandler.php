@@ -10,6 +10,8 @@ use DefStudio\Telegraph\Keyboard\Keyboard;
 use DefStudio\Telegraph\Keyboard\Button;
 use Illuminate\Support\Stringable;
 use App\Services\ChatGPT\ChatGptService;
+use DefStudio\Telegraph\Models\TelegraphChat;
+use DefStudio\Telegraph\Models\TelegraphBot;
 
 class TelegramHandler extends WebhookHandler
 {
@@ -40,11 +42,20 @@ class TelegramHandler extends WebhookHandler
         $this->reply('Этот бот умееет принимаить оплату!');
     }
 
-    protected function handleChatMessage(Stringable $text): void
+    public function handleChatMessage(Stringable $text): void
     {
-        $message = $text->value();
-        $answer = $this->chatService->get($message);
+//        $telegraph_bot = new TelegraphBot();
+//
+//        /** @var TelegraphChat $chat */
+//        $chat = $telegraph_bot->chats()->create([
+//            'chat_id' => 2,
+//            'name' => 2,
+//        ]);
 
-        $this->reply($answer);
+
+        $message = $text->value();
+//        $answer = $this->chatService->get($message);
+
+        $this->reply($message);
     }
 }

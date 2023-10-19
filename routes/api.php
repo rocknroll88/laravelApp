@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\YooMoneyController;
-use App\Http\Controllers\ChatGptController;
+use App\Http\Controllers\GptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +16,19 @@ use App\Http\Controllers\ChatGptController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+//
+//Route::controller(YooMoneyController::class)->prefix('yoomoney')->group(function () {
+//    Route::post('/payment', 'setPayment');
+//    Route::get('/banks', 'getSpbBanks');
+//    Route::get('/payment-info/{paymentId}', 'getPaymentInfo');
+//});
+//
+//Route::controller(GptController::class)->prefix('chatgpt')->group(function () {
+//    Route::get('/get-info', 'getInfo');
+//});
 
 Route::controller(YooMoneyController::class)->prefix('yoomoney')->group(function () {
     Route::post('/payment', 'setPayment');

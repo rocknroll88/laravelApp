@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\PusherController;
+use App\Http\Controllers\GptController;
 
 
 /*
@@ -16,9 +18,9 @@ use App\Http\Controllers\TestController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 //Route::get('/test', [CarsController::class, 'getCars']);
 
@@ -28,3 +30,4 @@ Route::get('/', function () {
 
 
 //Route::get('/factory', [TestController::class, 'index']);
+Route::get('/test', [GptController::class, 'index']);
